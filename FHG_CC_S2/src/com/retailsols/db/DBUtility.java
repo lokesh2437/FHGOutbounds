@@ -22,6 +22,7 @@ public class DBUtility {
 
 		} catch (Exception e) {
 			logger.error("", e);
+			System.out.println(e);
 		}
 	}
 

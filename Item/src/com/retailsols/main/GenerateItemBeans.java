@@ -22,6 +22,7 @@ import com.retailsols.jaxb.beans.POSIdentityType;
 import com.retailsols.jaxb.beans.RegularPriceType;
 import com.retailsols.jaxb.beans.RelatedItemAssociationType;
 import com.retailsols.jaxb.beans.RetailStoreItemType;
+import com.retailsols.util.MessageUtil;
 
 public class GenerateItemBeans {
 	
@@ -90,12 +91,12 @@ public class GenerateItemBeans {
 				itemType.setDamageDiscountable(rs_itm.getString("DAMAGEDISCOUNTABLE").equals("0")?false:true);
 				itemType.setDamageDiscountable(true);
 				//item image file
-				PreparedStatement ps_img=conn.prepareStatement(SQLConstants.getImageName);
+				/*PreparedStatement ps_img=conn.prepareStatement(SQLConstants.getImageName);
 				ResultSet rs_img=ps_img.executeQuery();
 				rs_img.next();
 				String image_name=rs_img.getString("IMAGE");
 				ps_img.close();
-				itemType.setImageFileName(image_name);
+				itemType.setImageFileName(image_name);*/
 				
 				// description
 				LocalizedNameDescriptionType localdesc=new LocalizedNameDescriptionType();
@@ -166,9 +167,10 @@ public class GenerateItemBeans {
 				// item level messages
 				ItemLevelMessagesType itemLevelMessagesType = new ItemLevelMessagesType();
 				MessageType messageType=new MessageType();
-				messageType.setID(Integer.parseInt(rs_idn.getString("ID_MSG")));
+				messageType.setID(MessageUtil.getMessageID(item_id,conn));
 				messageType.setMessageType("Screen");
 				messageType.setTransactionType("Sale");
+				
 				itemLevelMessagesType.getItemMsgAscn().add(messageType);
 				
 				//itemType.getDisplayMessage().add(itemLevelMessagesType);

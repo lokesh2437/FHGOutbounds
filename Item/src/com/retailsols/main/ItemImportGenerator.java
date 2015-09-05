@@ -64,8 +64,10 @@ public class ItemImportGenerator {
 			System.out.println("New Items's :: "+count[3] );
 			
 			if(count[0] >0 || count[1] > 0 || count[2] > 0 || count[3] > 0){
-				itemImport.getItem().addAll(new GenerateItemBeans().generateItemType(logger, con));
+				
 				itemImport.setPreloadData(GeneratePreloadData.getPreloadData(logger, con));
+				itemImport.getItem().addAll(new GenerateItemBeans().generateItemType(logger, con));
+				
 				this.generateXMLByMarshal();
 				
 				FHG_MOM_File_Generator.createMOMFile(new File(properties.getProperty("xmlsrc")), new File(properties.getProperty("momdest")), logger);

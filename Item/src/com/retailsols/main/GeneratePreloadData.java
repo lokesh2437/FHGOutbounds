@@ -62,10 +62,10 @@ public class GeneratePreloadData {
 			PreparedStatement ps_msg=conn.prepareStatement(SQLConstants.getMessages);
 			ResultSet rs_msg=ps_msg.executeQuery();
 			while(rs_msg.next()){
-				System.out.println("Processing Message :"+rs_msg.getInt("ID"));
+				System.out.println("Processing Message :"+rs_msg.getInt("ID_MSG"));
 				DisplayMessageType msgtype=new DisplayMessageType();
 				msgtype.setChangeType(ChangeTypeSubtype.UPS);
-				msgtype.setID(rs_msg.getInt("ID"));
+				msgtype.setID(rs_msg.getInt("ID_MSG"));
 				LocalizedMessageDescriptionType desctype=new LocalizedMessageDescriptionType();
 				desctype.setLanguage(LanguageType.EN);
 //				StringBuilder sb = new StringBuilder();
@@ -77,7 +77,7 @@ public class GeneratePreloadData {
 //		            sb.append(line);
 //		        }
 //		        br.close();
-				desctype.setValue(rs_msg.getString("MESSAGE"));
+				desctype.setValue(rs_msg.getString("NA_MSG_DPLY"));
 				
 				msgtype.getMsgText().add(desctype);
 				messages.add(msgtype);

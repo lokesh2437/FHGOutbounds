@@ -92,7 +92,7 @@ public class GenerateItemBeans {
 				itemType.setDamageDiscountable(true);
 				//item image file
 				/*PreparedStatement ps_img=conn.prepareStatement(SQLConstants.getImageName);
-				ResultSet rs_img=ps_img.executeQuery();
+				ResultSet rs_img=ps_img.executeQuery()mess;
 				rs_img.next();
 				String image_name=rs_img.getString("IMAGE");
 				ps_img.close();
@@ -169,11 +169,11 @@ public class GenerateItemBeans {
 				MessageType messageType=new MessageType();
 				messageType.setID(MessageUtil.getMessageID(item_id,conn));
 				messageType.setMessageType("Screen");
-				messageType.setTransactionType("Sale");
+				messageType.setTransactionType("Receipt");
 				
 				itemLevelMessagesType.getItemMsgAscn().add(messageType);
 				
-				//itemType.getDisplayMessage().add(itemLevelMessagesType);
+				itemType.getDisplayMessage().add(itemLevelMessagesType);
 				
 				// related items
 				ps_related.setString(1, item_id);

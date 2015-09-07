@@ -167,7 +167,7 @@ public class GenerateItemBeans {
 				// item level messages
 				ItemLevelMessagesType itemLevelMessagesType = new ItemLevelMessagesType();
 				MessageType messageType=new MessageType();
-				messageType.setID(MessageUtil.getMessageID(item_id,conn));
+				//messageType.setID(MessageUtil.getMessageID(item_id,conn));
 				messageType.setMessageType("Screen");
 				messageType.setTransactionType("Receipt");
 				
